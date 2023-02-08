@@ -29,6 +29,9 @@ export const styles = StyleSheet.create({
     time: {
         marginTop: 10,
         fontSize: 17
+    },
+    chosenTime: {
+        alignItems: 'center'
     }
 
 });

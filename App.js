@@ -139,7 +139,7 @@ export default function App() {
   };
 
 
-
+ const chosenTime = startDate + ' ' + startTime  + ' - ' + endDate + ' ' + endTime;
 
   return (
     <View style={styles.container}>
@@ -174,6 +174,7 @@ export default function App() {
           </View>
         </Col>
       </Grid>
+      <Text style={styles.chosenTime}>{chosenTime}</Text>
   </View>
   );
 }
