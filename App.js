@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Col, Grid } from 'react-native-easy-grid';
 import { useState } from 'react';
+import { styles } from './styles/styles';
 
 
 
@@ -142,20 +143,38 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <Text style={styles.header}>Booking:</Text>
+      <Text style={styles.time}>Starts: {startDate} {startTime}</Text>
+      <Text style={styles.time}>Ends: {endDate} {endTime}</Text>
+      <Text style={styles.time}>{status}</Text>
+      <Grid style={styles.grid}>
+        <Col size={30} style={styles.col}>
+          <View style={styles.picker}>
+            <Button onPress={showDatePicker} title='Pick date' />
+          </View>
+          {show && (
+            <DateTimePicker
+            testID='dateTimePicker'
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display='default'
+            onChange={onChange}
+            />
+          )}
+        </Col>
+        <Col size={30} style={styles.col}>
+          <View style={styles.picker}>
+            <Button onPress={showTimePicker} title='Pick time' />
+          </View>
+        </Col>
+        <Col size={30}>
+          <View style={styles.picker}>
+            <Button onPress={clearAll} title='Clear' />
+          </View>
+        </Col>
+      </Grid>
+  </View>
   );
 }
 
- 
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
